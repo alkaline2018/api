@@ -20,6 +20,7 @@ export class ImageResolver {
     ){
         if (imageList) {
             req.session.imageList = imageList;
+            console.log("imageList:", imageList)
             return true
         }
         return false
@@ -33,6 +34,7 @@ export class ImageResolver {
         if(!req.session.imageList){
             return null
         }
+        console.log("req.session.imageList:", req.session.imageList)
         return req.session.imageList
     }
 
