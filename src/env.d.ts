@@ -5,5 +5,7 @@ declare namespace NodeJS {
     PORT: string;
     SESSION_SECRET: string;
     CORS_ORIGIN: string;
+    GOOGLE_ID: string;
+    GOOGLE_PASSWORD: string;
   }
 }
