@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { env } from "process";
 
 // async..await is not allowed in global scope, must use a wrapper
 export async function sendEmail(to: string, html: string) {
@@ -11,19 +12,19 @@ export async function sendEmail(to: string, html: string) {
   let transporter = nodemailer.createTransport({
     service: "Gmail",
     // prot: 587,
-    host: "smtp.gmlail.com",
+    host:'smtp.gmail.com',
     secure: false,
     requireTLS: true,
     // secure: false, // true for 465, false for other ports
     auth: {
-      user: process.env.GOOGLE_ID, // generated ethereal user
-      pass: process.env.GOOGLE_PASSWORD, // generated ethereal password
+      user: process.env.GMAIL_ID, // generated ethereal user
+      pass: process.env.GMAIL_PASSWORD, // generated ethereal password
     },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"🚀 wingman 🐱‍🏍" ' + process.env.GOOGLE_ID, // sender address
+    from: '"🚀 wingman 🐱‍🏍" <'+process.env.GMAIL_ID+'>', // sender address
     to: to, // list of receivers
     subject: "Change Password ✔", // Subject line
     html: html, // html body
